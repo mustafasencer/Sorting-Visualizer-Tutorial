@@ -4,7 +4,7 @@ import {getQuickSortAnimations} from '../sortingAlgorithms/sortingAlgorithms.js'
 import './SortingVisualizer.css';
 import Button from 'react-bootstrap/Button';
 import {Form, FormControl, Nav, Navbar} from 'react-bootstrap';
-import {getHeapSortAnimations} from '../sortingAlgorithms/sortingAlgorithms';
+import {getBubbleSortAnimations, getHeapSortAnimations} from '../sortingAlgorithms/sortingAlgorithms';
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = 2;
@@ -39,12 +39,9 @@ export default class SortingVisualizer extends React.Component {
     this.setState({array});
   }
 
-  mergeSort() {
-    const animations = getMergeSortAnimations(this.state.array);
-    this.changeAnimations(animations);
-  }
 
   changeAnimations(animations) {
+    let startDate = +new Date();
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName('array-bar');
       const isColorChange = i % 3 !== 2;
@@ -65,6 +62,12 @@ export default class SortingVisualizer extends React.Component {
         }, i * ANIMATION_SPEED_MS);
       }
     }
+    console.log(+new Date() - startDate);
+  }
+
+  mergeSort() {
+    const animations = getMergeSortAnimations(this.state.array);
+    this.changeAnimations(animations);
   }
 
   quickSort() {
@@ -78,7 +81,8 @@ export default class SortingVisualizer extends React.Component {
   }
 
   bubbleSort() {
-    // We leave it as an exercise to the viewer of this code to implement this method.
+    const animations = getBubbleSortAnimations(this.state.array);
+    this.changeAnimations(animations);
   }
 
   // NOTE: This method will only work if your sorting algorithms actually return
