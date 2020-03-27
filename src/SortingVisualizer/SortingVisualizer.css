@@ -7,6 +7,7 @@
     width: 10px;
     display: inline-block;
     margin: 0 1px;
+    vertical-align:top;
 }
 
 Button {
@@ -15,14 +16,12 @@ Button {
 
 .array-container {
     width: 100%;
+    height: 100%;
+    background: aliceblue;
 }
 
-.array-form {
-    margin-top: 5px;
+.array-bar-wrapper {
     width: 100%;
     height: 100%;
-}
-
-.array-bar-container {
-
+    margin-bottom: 5px;
 }
