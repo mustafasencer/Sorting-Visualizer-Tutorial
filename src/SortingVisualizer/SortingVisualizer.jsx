@@ -120,17 +120,16 @@ export default class SortingVisualizer extends React.Component {
 
     return (
       <div className="array-container">
-        <Navbar bg="light" expand="lg">
+        <Navbar className="color-nav" variant="light">
           <Navbar.Brand href="#home">Sorting Algorithms Visualizer</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
             </Nav>
             <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
-              <Button variant="outline-success">Search</Button>
+              <span>Updated by&nbsp;
+                 <a href="https://github.com/mustafasencer" target="_blank" rel="noopener noreferrer">mustafasencero</a>
+              </span>
             </Form>
           </Navbar.Collapse>
         </Navbar>
@@ -153,9 +152,6 @@ export default class SortingVisualizer extends React.Component {
           <Button variant={'success'} onClick={() => this.sort('quick')}>Quick Sort</Button>
           <Button variant={'success'} onClick={() => this.sort('heap')}>Heap Sort</Button>
           <Button variant={'success'} onClick={() => this.sort('bubble')}>Bubble Sort</Button>
-          <Button variant={'danger'} onClick={() => this.testSortingAlgorithms()}>
-            Test Sorting Algorithms (BROKEN)
-          </Button>
         </Form>
       </div>
     );

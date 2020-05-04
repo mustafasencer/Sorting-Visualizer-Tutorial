@@ -7,11 +7,15 @@
     width: 10px;
     display: inline-block;
     margin: 0 1px;
-    vertical-align:top;
+    vertical-align: top;
 }
 
 Button {
     margin: 5px;
+}
+
+.color-nav {
+    background-color: #09d3ac;
 }
 
 .array-container {
