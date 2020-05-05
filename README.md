@@ -3,7 +3,9 @@ This project is meant to be a tutorial for Clement Mihailescu's [Sorting Visuali
 I completed the tutorial and made my own implementation of the Bubble Sort, Merge Sort, Quick Sort and Heap Sort.
 ## Screenshots 
 
-![alt text](https://github.com/mustafasencer/Sorting-Visualizer-Tutorial/tree/master/public/sort_visualizer.png?raw=true)
+![](/public/sort_visualizer.png?raw=true)
+
+![](/public/SortingVisualizer.gif?raw=true)
 
 ## Available Scripts
 
