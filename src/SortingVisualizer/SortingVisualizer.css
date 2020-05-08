@@ -4,7 +4,6 @@
 }
 
 .array-bar {
-    width: 10px;
     display: inline-block;
     margin: 0 1px;
     vertical-align: top;
@@ -12,10 +11,63 @@
 
 Button {
     margin: 5px;
+
 }
 
-.color-nav {
+Button:hover {
+    color: aqua;
+}
+
+.spanHeight {
+    color: #09d3ac;
+    visibility: visible;
+}
+
+.sortingAlg {
+    color: #282c34;
     background-color: #09d3ac;
+    border-color: #09d3ac;
+}
+
+.sortingAlg:hover {
+    color: black;
+    background-color: aqua;
+    border-color: aqua;
+}
+
+.sortingAlg:focus {
+    color: black;
+    background-color: aqua;
+    border-color: aqua;
+}
+
+.sortingAlg:active {
+    color: black;
+    background-color: aqua;
+    border-color: aqua;
+}
+
+.newArray {
+    color: #282c34;
+    background-color: aqua;
+    border-color: aqua;
+}
+
+
+.newArray:hover {
+    color: black;
+    background-color: #09d3ac;
+    border-color: #09d3ac;
+}
+
+.newArray:focus {
+    background-color: #09d3ac;
+    border-color: #09d3ac;
+}
+
+.newArray:active {
+    background-color: #09d3ac;
+    border-color: #09d3ac;
 }
 
 .array-container {

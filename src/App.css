@@ -20,3 +20,36 @@
 .App-link {
   color: #09d3ac;
 }
+
+
+.array-container {
+  left: 100px;
+  top: 100px;
+}
+
+.array-bar {
+  width: 10px;
+  display: inline-block;
+  margin: 0 1px;
+  vertical-align: top;
+}
+
+Button {
+  margin: 5px;
+}
+
+.color-nav {
+  background-color: #09d3ac;
+}
+
+.array-container {
+  width: 100%;
+  height: 100%;
+  background: aliceblue;
+}
+
+.array-bar-wrapper {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 5px;
+}

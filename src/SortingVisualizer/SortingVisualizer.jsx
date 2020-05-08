@@ -1,10 +1,11 @@
 import React from 'react';
-import {getMergeSortAnimations} from '../sortingAlgorithms/sortingAlgorithms.js';
-import {getQuickSortAnimations} from '../sortingAlgorithms/sortingAlgorithms.js';
+import {getMergeSortAnimations} from '../Main/sortingAlgorithms.js';
+import {getQuickSortAnimations} from '../Main/sortingAlgorithms.js';
 import './SortingVisualizer.css';
 import Button from 'react-bootstrap/Button';
-import {Form, FormControl, Nav, Navbar} from 'react-bootstrap';
-import {getBubbleSortAnimations, getHeapSortAnimations} from '../sortingAlgorithms/sortingAlgorithms';
+import {Form, Nav, Navbar} from 'react-bootstrap';
+import {getBubbleSortAnimations, getHeapSortAnimations} from '../Main/sortingAlgorithms';
+import {randomIntFromInterval} from '../Main/helperFunctions.js'
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = 2;
@@ -13,15 +14,16 @@ const ANIMATION_SPEED_MS = 2;
 const NUMBER_OF_ARRAY_BARS = 50;
 
 // This is the main color of the array bars.
-const PRIMARY_COLOR = 'blue';
+const PRIMARY_COLOR = "#282c34";
 
 // This is the color of array bars that are being compared throughout the animations.
-const SECONDARY_COLOR = 'red';
+const SECONDARY_COLOR = 'yellow';
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
     super(props);
     this.isSorted = false;
+    this.width = 6;
     this.maxValue = 300;
     this.minValue = 5;
     this.state = {
@@ -36,12 +38,13 @@ export default class SortingVisualizer extends React.Component {
   }
 
   componentDidMount() {
-    this.resetArray();
+    this.resetArray(NUMBER_OF_ARRAY_BARS);
   }
 
-  resetArray() {
+  resetArray(noOfArrayBars) {
     const array = [];
-    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
+    this.width = 500 / noOfArrayBars;
+    for (let i = 0; i < noOfArrayBars; i++) {
       array.push(randomIntFromInterval(this.minValue, this.maxValue));
     }
     this.setState({array});
@@ -99,77 +102,42 @@ export default class SortingVisualizer extends React.Component {
     this.changeAnimations(animations);
   }
 
-  // NOTE: This method will only work if your sorting algorithms actually return
-  // the sorted arrays; if they return the animations (as they currently do), then
-  // this method will be broken.
-  testSortingAlgorithms() {
-    for (let i = 0; i < 100; i++) {
-      const array = [];
-      const length = randomIntFromInterval(1, 1000);
-      for (let i = 0; i < length; i++) {
-        array.push(randomIntFromInterval(-1000, 1000));
-      }
-      const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-      const mergeSortedArray = getMergeSortAnimations(array.slice());
-      console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
-    }
-  }
-
   render() {
     const {array} = this.state;
+    const isRunning = false;
 
     return (
       <div className="array-container">
-        <Navbar className="color-nav" variant="light">
-          <Navbar.Brand href="#home">Sorting Algorithms Visualizer</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-            </Nav>
-            <Form inline>
-              <span>Updated by&nbsp;
-                 <a href="https://github.com/mustafasencer" target="_blank" rel="noopener noreferrer">mustafasencero</a>
-              </span>
-            </Form>
-          </Navbar.Collapse>
-        </Navbar>
         <Form className="array-form">
-          <div className="array-bar-wrapper" style={{height: `${this.maxValue}px`}}>
-            {array.map((value, idx) => (
+          <div className="array-bar-wrapper"
+               style={{height: `${this.maxValue}px`}}>
+            {array.map((height, idx) => (
               <div
                 className="array-bar"
                 key={idx}
                 style={{
                   backgroundColor: PRIMARY_COLOR,
-                  height: `${value}px`,
-                }}></div>
+                  opacity: 0.5,
+                  height: `${height}px`,
+                  width: `${this.width}px`
+                }}>
+                {this.width > 25 ?
+                  <span className="spanHeight">{height}</span>
+                  : <span></span>
+                }
+              </div>
             ))}
           </div>
         </Form>
         <Form className="button-container">
-          <Button variant={'primary'} onClick={() => this.resetArray()}>Generate New Array</Button>
-          <Button variant={'success'} onClick={() => this.sort('merge')}>Merge Sort</Button>
-          <Button variant={'success'} onClick={() => this.sort('quick')}>Quick Sort</Button>
-          <Button variant={'success'} onClick={() => this.sort('heap')}>Heap Sort</Button>
-          <Button variant={'success'} onClick={() => this.sort('bubble')}>Bubble Sort</Button>
+          <Button className="newArray" onClick={() => this.resetArray(document.getElementById("value").innerHTML)}>Generate New Array</Button>
+          <Button className="sortingAlg" onClick={() => this.sort('merge')}>Merge Sort</Button>
+          <Button className="sortingAlg"  onClick={() => this.sort('quick')}>Quick Sort</Button>
+          <Button className="sortingAlg"  onClick={() => this.sort('heap')}>Heap Sort</Button>
+          <Button className="sortingAlg"  onClick={() => this.sort('bubble')}>Bubble Sort</Button>
         </Form>
       </div>
     );
   }
 }
 
-// From https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
-function randomIntFromInterval(min, max) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function arraysAreEqual(arrayOne, arrayTwo) {
-  if (arrayOne.length !== arrayTwo.length) return false;
-  for (let i = 0; i < arrayOne.length; i++) {
-    if (arrayOne[i] !== arrayTwo[i]) {
-      return false;
-    }
-  }
-  return true;
-}
