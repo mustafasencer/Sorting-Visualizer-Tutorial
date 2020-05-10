@@ -1,6 +1,8 @@
 This project is meant to be a tutorial for Clement Mihailescu's [Sorting Visualizer project](https://github.com/clementmihailescu/Sorting-Visualizer).
 
 I completed the tutorial and made my own implementation of the Bubble Sort, Merge Sort, Quick Sort and Heap Sort.
+
+You can reach my version from https://mustafasencer.github.io/Sorting-Visualizer-Tutorial
 ## Screenshots 
 
 ![](/public/sorting-visualizer.png?raw=true)
