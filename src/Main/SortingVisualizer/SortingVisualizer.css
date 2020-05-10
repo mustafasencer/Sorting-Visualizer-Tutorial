@@ -53,7 +53,6 @@ Button:hover {
     border-color: aqua;
 }
 
-
 .newArray:hover {
     color: black;
     background-color: #09d3ac;
@@ -71,13 +70,13 @@ Button:hover {
 }
 
 .array-container {
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
     background: aliceblue;
 }
 
 .array-bar-wrapper {
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
     margin-bottom: 5px;
 }

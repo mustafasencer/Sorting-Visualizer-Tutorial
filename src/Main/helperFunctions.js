@@ -12,12 +12,3 @@ export function arraysAreEqual(arrayOne, arrayTwo) {
   }
   return true;
 }
-
-export function resetArray(numberOfArrayBars) {
-  const array = [];
-  for (let i = 0; i < numberOfArrayBars; i++) {
-    array.push(randomIntFromInterval(this.minValue, this.maxValue));
-  }
-  this.setState({array});
-  this.isSorted = false;
-}
