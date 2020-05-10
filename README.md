@@ -5,8 +5,6 @@ I completed the tutorial and made my own implementation of the Bubble Sort, Merg
 
 ![](/public/sorting-visualizer.png?raw=true)
 
-![](/public/SortingVisualizer.gif?raw=true)
-
 ## Available Scripts
 
 In the project directory, you can run:
