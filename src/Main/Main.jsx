@@ -48,7 +48,6 @@ export default class Main extends React.Component {
                            array={this.state}
                            width={this.width}
                            animationSpeed={this.animationSpeed}
-                           minValue={this.minValue}
                            maxValue={this.maxValue}/>
       </div>
     );

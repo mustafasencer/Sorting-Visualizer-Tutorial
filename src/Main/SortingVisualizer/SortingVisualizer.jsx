@@ -58,33 +58,36 @@ export default class SortingVisualizer extends React.Component {
   }
 
   render() {
-    const {array} = this.props.array;
+    const {
+      resetArray,
+      array,
+      width,
+      maxValue,
+    } = this.props;
 
     return (
       <div className="array-container">
-        <Form className="array-form">
-          <div className="array-bar-wrapper"
-               style={{height: `${this.maxValue}px`}}>
-            {array.map((height, idx) => (
-              <div
-                className="array-bar"
-                key={idx}
-                style={{
-                  backgroundColor: PRIMARY_COLOR,
-                  opacity: 0.5,
-                  height: `${height}px`,
-                  width: `${this.props.width}px`,
-                }}>
-                {this.props.width > 20 ?
-                  <span className="spanHeight">{height}</span>
-                  : <span>
+        <div className="array-bar-wrapper"
+             style={{height: `${this.maxValue}px`}}>
+          {array.map((height, idx) => (
+            <div
+              className="array-bar"
+              key={idx}
+              style={{
+                backgroundColor: PRIMARY_COLOR,
+                opacity: 0.5,
+                height: `${height}px`,
+                width: `${this.props.width}px`,
+              }}>
+              {this.props.width > 20 ?
+                <span className="spanHeight">{height}</span>
+                : <span>
 
                   </span>
-                }
-              </div>
-            ))}
-          </div>
-        </Form>
+              }
+            </div>
+          ))}
+        </div>
         <Form className="button-container">
           <Button className="newArray"
                   onClick={() => this.props.resetArray(document.getElementById('noOfBarValue').innerHTML)}>Generate
